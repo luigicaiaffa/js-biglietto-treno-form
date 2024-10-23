@@ -72,6 +72,46 @@ const ticketPriceCalc = () => {
 
     // prezzo finale biglietto
     ticketPrice = (standardPrice - appliedSale).toFixed(2) + " €";
+    
+    // stampa biglietto
+    const ticketStamp = `
+    <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
+    <div class="card px-4 pb-2">
+      <div class="card-body">
+        <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
+        <div class="row">
+          <div class="bg-secondary text-light fw-bold col-4 pb-5">
+            <h5 class="fw-bold my-2">NOME PASSEGGERO</h5>
+            <div class="fs-5">${userFullName}</div>
+          </div>
+          <div class="col-8 border-top border-bottom">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Offerta</th>
+                  <th>Carrozza</th>
+                  <th>Codice CP</th>
+                  <th>Costo Biglietto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${offerUsed}</td>
+                  <td>5</td>
+                  <td>92911</td>
+                  <td>${ticketPrice}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    `;
+  
+    // # OUTPUT
+    ticketElement.innerHTML = ticketStamp;
   }
 
   // ALRTRIMENTI
@@ -79,44 +119,6 @@ const ticketPriceCalc = () => {
     alert("dati inseriti invalidi");
   }
 
-  const ticketStamp = `
-  <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
-  <div class="card px-4 pb-2">
-    <div class="card-body">
-      <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
-      <div class="row">
-        <div class="bg-secondary text-light fw-bold col-4 pb-5">
-          <h5 class="fw-bold my-2">NOME PASSEGGERO</h5>
-          <div class="fs-5">${userFullName}</div>
-        </div>
-        <div class="col-8 border-top border-bottom">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Offerta</th>
-                <th>Carrozza</th>
-                <th>Codice CP</th>
-                <th>Costo Biglietto</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>${offerUsed}</td>
-                <td>5</td>
-                <td>92911</td>
-                <td>${ticketPrice}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  `;
-
-  // # OUTPUT
-  ticketElement.innerHTML = ticketStamp;
 
   // | debug console log
   console.log(`
