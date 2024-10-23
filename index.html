@@ -53,7 +53,7 @@
 
             <!-- select age -->
             <div class="col-4">
-                <label for="input-age" class="form-label">Fascia d'età</label>
+              <label for="input-age" class="form-label">Fascia d'età</label>
               <select class="form-select text-center" id="input-age">
                 <option>Maggiorenne</option>
                 <option>Minorenne</option>
@@ -61,13 +61,57 @@
               </select>
             </div>
           </div>
+
           <!-- buttons -->
           <div class="py-4">
-            <button class="btn btn-secondary px-5 mx-4" id="calc-train-ticket-price">Genera</button>
-            <button class="btn btn-secondary px-5 mx-4" id="reset-btn">Annulla</button>
+            <button
+              class="btn btn-secondary px-5 mx-4"
+              id="calc-train-ticket-price"
+            >
+              Genera
+            </button>
+            <button class="btn btn-secondary px-5 mx-4" id="reset-btn">
+              Annulla
+            </button>
           </div>
         </div>
       </div>
+
+      <!-- biglietto generato -->
+      <div id="generate-ticket">
+        <!-- <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
+        <div class="card px-4">
+          <div class="card-body">
+            <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
+            <div class="row">
+              <div class="bg-secondary fw-bold col-4 pb-5">
+                <h5 class="fw-bold m-0">NOME PASSEGGERO</h5>
+                <div>${}</div>
+              </div>
+              <div class="col-8 border-top border-bottom">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Offerta</th>
+                      <th>Carrozza</th>
+                      <th>Codice CP</th>
+                      <th>Costo Biglietto</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>${}</td>
+                      <td>5</td>
+                      <td>92911</td>
+                      <td>${ticketPrice}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <!-- | CUSTOM JS | -->
