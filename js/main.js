@@ -21,8 +21,16 @@ const ticketPriceKm = 0.21;
 let standardPrice = 0;
 let appliedSale = 0;
 let ticketPrice = 0;
+let offerUsed = "Biglietto Standard";
 
 // # ELABORAZIONE
+
+// funzione annulla form
+const resetForm = () => {
+  fullNameInput.value = "";
+  kmInput.value = "";
+  ageInput.value = "";
+};
 
 // dichiaro una funzione per calcolare il prezzo dei biglietti
 const ticketPriceCalc = () => {
@@ -47,12 +55,19 @@ const ticketPriceCalc = () => {
     if (isUnderSaleApplied) {
       // applica sconto 20%
       appliedSale = (standardPrice * 20) / 100;
+      offerUsed = "Under 18";
     }
 
     // SE il valore età è over 65
-    if (isOverSaleApplied) {
+    else if (isOverSaleApplied) {
       // applica sconto 40%
       appliedSale = (standardPrice * 40) / 100;
+      offerUsed = "Over 65";
+    }
+
+    // ALTRIMENTI
+    else {
+      offerUsed = "Biglietto Standard";
     }
 
     // prezzo finale biglietto
@@ -66,19 +81,19 @@ const ticketPriceCalc = () => {
 
   const ticketStamp = `
   <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
-  <div class="card px-4">
+  <div class="card px-4 pb-2">
     <div class="card-body">
       <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
       <div class="row">
-        <div class="bg-secondary fw-bold col-4 pb-5">
-          <h5 class="fw-bold m-0">NOME PASSEGGERO</h5>
-          <div>${userFullName}</div>
+        <div class="bg-secondary text-light fw-bold col-4 pb-5">
+          <h5 class="fw-bold my-2">NOME PASSEGGERO</h5>
+          <div class="fs-5">${userFullName}</div>
         </div>
         <div class="col-8 border-top border-bottom">
           <table class="table">
             <thead>
               <tr>
-                <th>Sconto Applicato</th>
+                <th>Offerta</th>
                 <th>Carrozza</th>
                 <th>Codice CP</th>
                 <th>Costo Biglietto</th>
@@ -86,7 +101,7 @@ const ticketPriceCalc = () => {
             </thead>
             <tbody>
               <tr>
-                <td>${appliedSale}</td>
+                <td>${offerUsed}</td>
                 <td>5</td>
                 <td>92911</td>
                 <td>${ticketPrice}</td>
@@ -100,10 +115,12 @@ const ticketPriceCalc = () => {
   </div>
   `;
 
+  // # OUTPUT
   ticketElement.innerHTML = ticketStamp;
 
   // | debug console log
   console.log(`
+    userFullName : ${userFullName}
     userKmNum : ${userKmNum}
     userAge : ${userAge}
     isUserKmNumValid : ${isUserKmNumValid}
@@ -117,5 +134,5 @@ const ticketPriceCalc = () => {
 
 // attiva funzione di calcolo al click del bottone
 calcPriceButton.addEventListener("click", ticketPriceCalc);
-
-// # OUTPUT
+calcPriceButton.addEventListener("click", resetForm);
+resetButton.addEventListener("click", resetForm);
