@@ -11,6 +11,9 @@ const calcPriceButton = document.getElementById("calc-train-ticket-price");
 // prendi bottone annulla
 const resetButton = document.getElementById("reset-btn");
 
+// prendi il div in cui stampare il biglietto
+const ticketElement = document.getElementById("generate-ticket");
+
 // assegno il prezzo del biglietto per km
 const ticketPriceKm = 0.21;
 
@@ -27,7 +30,8 @@ const ticketPriceCalc = () => {
   const userKmNum = kmInput.value;
   // valore inserito dall'utente età
   const userAge = ageInput.value;
-
+  // valore inserito dall'utente nome cognome
+  const userFullName = fullNameInput.value;
   // verifica dati inseriti correttamente
   const isUserKmNumValid = !isNaN(userKmNum) && !userKmNum <= 0;
   // verifica età per sconti
@@ -60,6 +64,44 @@ const ticketPriceCalc = () => {
     alert("dati inseriti invalidi");
   }
 
+  const ticketStamp = `
+  <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
+  <div class="card px-4">
+    <div class="card-body">
+      <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
+      <div class="row">
+        <div class="bg-secondary fw-bold col-4 pb-5">
+          <h5 class="fw-bold m-0">NOME PASSEGGERO</h5>
+          <div>${userFullName}</div>
+        </div>
+        <div class="col-8 border-top border-bottom">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Sconto Applicato</th>
+                <th>Carrozza</th>
+                <th>Codice CP</th>
+                <th>Costo Biglietto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${appliedSale}</td>
+                <td>5</td>
+                <td>92911</td>
+                <td>${ticketPrice}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  `;
+
+  ticketElement.innerHTML = ticketStamp;
+
   // | debug console log
   console.log(`
     userKmNum : ${userKmNum}
@@ -77,39 +119,3 @@ const ticketPriceCalc = () => {
 calcPriceButton.addEventListener("click", ticketPriceCalc);
 
 // # OUTPUT
-
-`
-<h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
-<div class="card px-4">
-  <div class="card-body">
-    <h5 class="fw-bold">DETTAGLIO PASSEGGERI</h5>
-    <div class="row">
-      <div class="bg-secondary fw-bold col-4 pb-5">
-        <h5 class="fw-bold m-0">NOME PASSEGGERO</h5>
-        <div>${}</div>
-      </div>
-      <div class="col-8 border-top border-bottom">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Offerta</th>
-              <th>Carrozza</th>
-              <th>Codice CP</th>
-              <th>Costo Biglietto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>${}</td>
-              <td>5</td>
-              <td>92911</td>
-              <td>${ticketPrice}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-`
