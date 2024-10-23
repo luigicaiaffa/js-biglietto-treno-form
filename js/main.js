@@ -6,6 +6,10 @@ const fullNameInput = document.getElementById("input-fullname");
 const kmInput = document.getElementById("input-km");
 // prendi input fascia d'età passeggero
 const ageInput = document.getElementById("input-age");
+// prendi bottone calcola biglietto
+const calcPriceButton = document.getElementById("calc-train-ticket-price");
+// prendi bottone annulla
+const resetButton = document.getElementById("reset-btn");
 
 // assegno il prezzo del biglietto per km
 const ticketPriceKm = 0.21;
@@ -31,12 +35,28 @@ const ticketPriceCalc = () => {
 
   // SE i dati inseriti sono validi
   if (isUserKmNumValid && isUserFullNameValid) {
-    
+    // calcola prezzo biglietto
+    // SE il valore età è minorenne
+    if (condition) {
+      // applica sconto 20%
+    }
+    // SE il valore età è over 65
+    if (condition) {
+      // applica sconto 40%
+    }
   }
 
-  // controllo che il numero di chilometri inserito sia valido
+  // | debug console log
+  console.log(`
+    ticketPriceKm : ${ticketPriceKm}
+    userKmNum : ${userKmNum}
+    userAge : ${userAge}
+    userFullName : ${userFullName}
+    isUserKmNumValid : ${isUserKmNumValid}
+    isUserFullNameValid : ${isUserFullNameValid}
+`);
 };
 
 // # OUTPUT
 
-// | debug console log
+calcPriceButton.addEventListener("click", ticketPriceCalc);
