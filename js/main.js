@@ -14,13 +14,14 @@ const resetButton = document.getElementById("reset-btn");
 // assegno il prezzo del biglietto per km
 const ticketPriceKm = 0.21;
 
+// dichiara variabili per prezzo e sconti applicati
+let standardPrice = 0;
+let appliedSale = 0;
+let ticketPrice = 0;
+
 // # ELABORAZIONE
-// funzione per sconti
-const calcUnderSale = () => {};
 
-const calcOverSale = () => {};
-
-// dichiaro una funzione per calcolare il prezzo dei bigliett
+// dichiaro una funzione per calcolare il prezzo dei biglietti
 const ticketPriceCalc = () => {
   // valore inserito dall'utente nome
   const userFullName = fullNameInput.value;
@@ -31,19 +32,34 @@ const ticketPriceCalc = () => {
 
   // verifica dati inseriti correttamente
   const isUserKmNumValid = !isNaN(userKmNum) && !userKmNum <= 0;
-  const isUserFullNameValid = userFullName.lenght > 3;
+  // verifica età per sconti
+  const isUnderSaleApplied = userAge === "Minorenne";
+  const isOverSaleApplied = userAge === "Over 65";
 
   // SE i dati inseriti sono validi
-  if (isUserKmNumValid && isUserFullNameValid) {
-    // calcola prezzo biglietto
+  if (isUserKmNumValid) {
+    // calcola prezzo standard biglietto
+    standardPrice = userKmNum * ticketPriceKm;
+
     // SE il valore età è minorenne
-    if (condition) {
+    if (isUnderSaleApplied) {
       // applica sconto 20%
+      appliedSale = (standardPrice * 20) / 100;
     }
+
     // SE il valore età è over 65
-    if (condition) {
+    if (isOverSaleApplied) {
       // applica sconto 40%
+      appliedSale = (standardPrice * 40) / 100;
     }
+
+    // prezzo finale biglietto
+    ticketPrice = (standardPrice - appliedSale).toFixed(2) + " €";
+  }
+
+  // ALRTRIMENTI
+  else {
+    alert("dati inseriti invalidi");
   }
 
   // | debug console log
@@ -53,10 +69,15 @@ const ticketPriceCalc = () => {
     userAge : ${userAge}
     userFullName : ${userFullName}
     isUserKmNumValid : ${isUserKmNumValid}
-    isUserFullNameValid : ${isUserFullNameValid}
-`);
+    isUnderSaleApplied : ${isUnderSaleApplied}
+    isOverSaleApplied : ${isOverSaleApplied}
+    standardPrice : ${standardPrice}
+    appliedSale : ${appliedSale}
+    ticketPrice : ${ticketPrice}
+    `);
 };
 
-// # OUTPUT
-
+// attiva funzione di calcolo al click del bottone
 calcPriceButton.addEventListener("click", ticketPriceCalc);
+
+// # OUTPUT
