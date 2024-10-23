@@ -12,29 +12,62 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+
+    <!-- | CUSTOM CSS | -->
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
+    <!-- ! PAGE CONTENT ! -->
     <div class="container">
-      <label for="input-fullname" class="form-label">Nome Cognome</label>
-      <input
-        type="text"
-        id="input-fullname"
-        class="form-control"
-        value="Jon Snow"
-      />
+      <!-- # TITLE -->
+      <h1 class="text-center text-light fw-bold py-4">
+        CALCOLA IL PREZZO DEL TUO BIGLIETTO
+      </h1>
 
-      <label for="input-km" class="form-label">Km da percorrere</label>
-      <input type="number" id="input-km" class="form-control" value="20" />
+      <!-- # CARD -->
+      <div class="card text-center">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <!-- input full name -->
+              <label for="input-fullname" class="form-label"
+                >Nome Cognome</label
+              >
+              <input
+                type="text"
+                id="input-fullname"
+                class="form-control text-center"
+              />
+            </div>
 
-      <select class="form-select" id="input-age">
-        <option>Maggiorenne</option>
-        <option>Minorenne</option>
-        <option>Over 65</option>
-      </select>
+            <!-- input km -->
+            <div class="col-4">
+              <label for="input-km" class="form-label">Km da percorrere</label>
+              <input
+                type="number"
+                id="input-km"
+                class="form-control text-center"
+              />
+            </div>
 
-      <button id="calc-train-ticket-price">Genera</button>
-      <button id="reset-btn">Annulla</button>
+            <!-- select age -->
+            <div class="col-4">
+                <label for="input-age" class="form-label">Fascia d'età</label>
+              <select class="form-select text-center" id="input-age">
+                <option>Maggiorenne</option>
+                <option>Minorenne</option>
+                <option>Over 65</option>
+              </select>
+            </div>
+          </div>
+          <!-- buttons -->
+          <div class="py-4">
+            <button class="btn btn-secondary px-5 mx-4" id="calc-train-ticket-price">Genera</button>
+            <button class="btn btn-secondary px-5 mx-4" id="reset-btn">Annulla</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- | CUSTOM JS | -->

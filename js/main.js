@@ -23,8 +23,6 @@ let ticketPrice = 0;
 
 // dichiaro una funzione per calcolare il prezzo dei biglietti
 const ticketPriceCalc = () => {
-  // valore inserito dall'utente nome
-  const userFullName = fullNameInput.value;
   // valore inserito dall'utente km
   const userKmNum = kmInput.value;
   // valore inserito dall'utente età
@@ -64,10 +62,8 @@ const ticketPriceCalc = () => {
 
   // | debug console log
   console.log(`
-    ticketPriceKm : ${ticketPriceKm}
     userKmNum : ${userKmNum}
     userAge : ${userAge}
-    userFullName : ${userFullName}
     isUserKmNumValid : ${isUserKmNumValid}
     isUnderSaleApplied : ${isUnderSaleApplied}
     isOverSaleApplied : ${isOverSaleApplied}
