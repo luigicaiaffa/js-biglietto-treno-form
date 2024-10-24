@@ -46,6 +46,7 @@
               <label for="input-km" class="form-label">Km da percorrere</label>
               <input
                 type="number"
+                min="1"
                 id="input-km"
                 class="form-control text-center"
               />
@@ -70,7 +71,11 @@
             >
               Genera
             </button>
-            <button class="btn btn-secondary px-5 mx-4" id="reset-btn">
+            <button
+              type="button"
+              class="btn btn-secondary px-5 mx-4"
+              id="reset-btn"
+            >
               Annulla
             </button>
           </div>

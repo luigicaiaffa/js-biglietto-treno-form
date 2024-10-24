@@ -35,7 +35,7 @@ const resetForm = () => {
 // dichiaro una funzione per calcolare il prezzo dei biglietti
 const ticketPriceCalc = () => {
   // valore inserito dall'utente km
-  const userKmNum = kmInput.value;
+  const userKmNum = parseInt(kmInput.value);
   // valore inserito dall'utente età
   const userAge = ageInput.value;
   // valore inserito dall'utente nome cognome
@@ -72,7 +72,7 @@ const ticketPriceCalc = () => {
 
     // prezzo finale biglietto
     ticketPrice = (standardPrice - appliedSale).toFixed(2) + " €";
-    
+
     // stampa biglietto
     const ticketStamp = `
     <h1 class="text-center text-light fw-bold py-4">IL TUO BIGLIETTO</h1>
@@ -109,7 +109,7 @@ const ticketPriceCalc = () => {
     </div>
     </div>
     `;
-  
+
     // # OUTPUT
     ticketElement.innerHTML = ticketStamp;
   }
@@ -118,7 +118,6 @@ const ticketPriceCalc = () => {
   else {
     alert("dati inseriti invalidi");
   }
-
 
   // | debug console log
   console.log(`
